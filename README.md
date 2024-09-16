@@ -36,8 +36,7 @@ This project implements an AI Chatbot application using ReactJS. It provides a u
 
 ## Getting Started
 
-1. Clone the repository:
-git clone https://github.com/yourusername/AIChatbot-ReactJS.git
+1. Clone the repository
 
 
 2. Navigate to the project directory:
@@ -59,7 +58,3 @@ Once the development server is running, navigate to http://localhost:3000 in you
 ## Contributing
 
 Contributions are welcome! Please feel free to submit pull requests or issues.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
