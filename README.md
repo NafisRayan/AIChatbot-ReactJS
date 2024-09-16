@@ -28,6 +28,12 @@ This project implements an AI Chatbot application using ReactJS. It provides a u
 - **React Testing Library**: Utilities for testing React components
 - **Web Vitals**: Library for tracking web performance metrics
 
+## Screenshots
+### Light Mode
+![Light Mode Screenshot](/public/light.png)
+### Dark Mode
+![Dark Mode Screenshot](/public/dark.png)
+
 ## Getting Started
 
 1. Clone the repository:
