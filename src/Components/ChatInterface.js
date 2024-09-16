@@ -48,15 +48,28 @@ function ChatInterface() {
     }
   
     function formatText(text) {
-      text = escapeHTML(text);
+      // Remove leading/trailing whitespace
+      text = text.trim();
+    
+      // Handle bold and italic formatting
       text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
       text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      text = text.replace(/(\.|\!|\?|\:)\s/g, '$1<br/><br/>');
-      text = text.replace(/\* /g, '• ');
-      text = text.replace(/```([\s\S]*?)```/g, (match, p1) => `<pre><code>${p1.trim()}</code></pre>`);
-      text = text.replace(/`(.*?)`/g, '<code>$1</code>');
-      return text;
-    }
+    
+      // Replace line breaks with <br/>
+      text = text.replace(/(\r\n|\n|\r)/gm, '<br/>');
+    
+      // Add space after punctuation marks
+      text = text.replace(/([.!?])\s+/g, '$1 ');
+    
+      // Remove extra spaces around punctuation
+      text = text.replace(/(\s)([.!?])(\s)/g, '$1$2$3');
+    
+      // Handle code blocks
+      text = text.replace(/```([\s\S]*?)```/g, (match, p1) => <pre><code>${p1.trim()}</code></pre>);
+    
+    // Handle inline code text = text.replace(/(.*?)/g, '<code>$1</code>');
+    
+    return text; }
   
     const toggleTheme = () => {
       setIsDarkMode(!isDarkMode);
@@ -94,7 +107,7 @@ function ChatInterface() {
               maxWidth: '70%',
               padding: '10px',
               borderRadius: '10px',
-              backgroundColor: message.sender === 'user' ? '#61dafb' : isDarkMode ? '#2c2c2c' : '#e0e0e0',
+              backgroundColor: message.sender === 'user' ? '#5cb85c' : isDarkMode ? '#2c2c2c' : '#e0e0e0',
               color: message.sender === 'user' ? 'white' : isDarkMode ? '#e0e0e0' : 'black',
               alignSelf: message.sender === 'user' ? 'flex-end' : 'flex-start',
               boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
@@ -135,7 +148,7 @@ function ChatInterface() {
           type="submit"
           style={{
             padding: '10px 20px',
-            backgroundColor: '#61dafb',
+            backgroundColor: '#5cb85c',
             color: 'white',
             border: 'none',
             borderRadius: '25px',
